@@ -1,0 +1,14 @@
+close all
+clear all
+A = double(imread('DRIVE.jpg'));
+B = A(:,:,2);
+% figure;imshow(B);
+C = FrangiFilter2D(B,[]);
+figure;imshow(C);
+
+GT = double(imread('GT.jpg'))/255;
+figure;imshow(GT,[]);
+
+EV = Evaluate(im2bw(GT),im2bw(C));
+thresh = EV(6);
+
